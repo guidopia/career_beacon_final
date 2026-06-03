@@ -1,0 +1,253 @@
+.onboarding-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+}
+
+.onboarding-sidebar {
+  background-color: #111;
+  color: #fff;
+  width: 35%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #222;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #59fcd9;
+}
+
+.sidebar-content {
+  margin-top: 4rem;
+}
+
+.sidebar-content h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.sidebar-content p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #888;
+}
+
+.onboarding-main {
+  width: 65%;
+  background-color: #000;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.help-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.help-link {
+  padding: 5px 10px;
+  color: #59fcd9;
+  background-color: #111;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  border: 1px solid #59fcd9;
+}
+
+.onboarding-content {
+  max-width: 550px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.onboarding-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+.progress-container {
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.progress-filled {
+  height: 100%;
+  background-color: #59fcd9;
+  transition: width 0.3s ease;
+}
+
+.step-indicator {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.question-container {
+  margin-bottom: 2rem;
+}
+
+.question-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.option-item {
+  padding: 1rem;
+  border: 1px solid #222;
+  cursor: pointer;
+  background-color: #111;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.option-item:hover {
+  border-color: #59fcd9;
+}
+
+.option-item.selected {
+  border-color: #59fcd9;
+  box-shadow: 0 0 0 1px #59fcd9;
+  background-color: #111;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #222;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  background-color: #111;
+  color: #fff;
+}
+
+.text-input::placeholder {
+  color: #666;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skill-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-input label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.back-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #222;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  border-color: #59fcd9;
+  color: #59fcd9;
+}
+
+.continue-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #59fcd9;
+  color: #000;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.continue-button:disabled {
+  background-color: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.continue-button:hover:not(:disabled) {
+  background-color: #4ae0c0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .onboarding-container {
+    flex-direction: column;
+  }
+  
+  .onboarding-sidebar {
+    width: 100%;
+    height: auto;
+    padding: 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid #222;
+  }
+  
+  .sidebar-content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .sidebar-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .onboarding-main {
+    width: 100%;
+    height: auto;
+    min-height: 60vh;
+  }
+  
+  .options-container {
+    grid-template-columns: 1fr;
+  }
+}

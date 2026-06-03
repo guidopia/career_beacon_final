@@ -1,0 +1,28 @@
+# PRODIGY AI - Robots.txt
+# Allow search engines to crawl all public pages
+
+User-agent: *
+Allow: /
+Allow: /LOGO.png
+Allow: /favicon.ico
+Allow: /favicon.png
+Disallow: /admin-prepaid
+
+# Crawl delay to be respectful to server
+Crawl-delay: 1
+
+# Sitemap location - FIXED: Using www protocol consistently
+Sitemap: https://www.guidopia.com/sitemap.xml
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Allow: /LOGO.png
+Allow: /favicon.ico
+Allow: /favicon.png
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
