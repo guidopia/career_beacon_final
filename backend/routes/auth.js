@@ -8,12 +8,16 @@ const PrepaidAccess = require('../models/PrepaidAccess');
 const Purchase = require('../models/Purchase');
 
 function getFrontendUrl() {
-  // In local/dev, always redirect back to the local Vite app so Google OAuth
-  // doesn't bounce you to production just because FRONTEND_URL is set.
-  if (process.env.NODE_ENV !== 'production') {
-    return process.env.FRONTEND_URL_DEV || 'http://localhost:5173';
+  if (process.env.FRONTEND_URL_DEV) {
+    return process.env.FRONTEND_URL_DEV.replace(/\/$/, '');
   }
-  return process.env.FRONTEND_URL || 'http://localhost:5173';
+  if (process.env.FRONTEND_URL) {
+    return process.env.FRONTEND_URL.replace(/\/$/, '');
+  }
+  if (process.env.NODE_ENV === 'production') {
+    console.error('❌ FRONTEND_URL is required in production (OAuth redirects will fail)');
+  }
+  return 'http://localhost:5173';
 }
 
 // Debug route to check environment variables

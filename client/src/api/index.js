@@ -2,7 +2,7 @@ import axios from "axios";
 
 // This file is the single source of truth for the backend API base URL. Use API_BASE_URL everywhere for backend calls.
 
-const DEFAULT_PROD_API = "https://prodigy-ai-backend.vercel.app";
+const DEFAULT_PROD_API = "https://career-beacon-server.vercel.app";
 const DEFAULT_DEV_API = "http://localhost:3000";
 
 function isLocalhostUrl(url) {

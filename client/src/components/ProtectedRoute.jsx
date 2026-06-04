@@ -124,7 +124,16 @@ export default function ProtectedRoute({ children }) {
           setAuthenticated(false);
           setVerifyError('');
         } else {
-          setVerifyError('Unable to verify session. Please check your connection and try again.');
+          const isNetwork =
+            !error?.response &&
+            (error?.code === 'ERR_NETWORK' || error?.message === 'Network Error');
+          if (status === 500 || isNetwork) {
+            setVerifyError(
+              'Cannot reach the authentication server (often a CORS or API URL mismatch). Retry in a moment; if it persists, redeploy the backend with the latest CORS settings.'
+            );
+          } else {
+            setVerifyError('Unable to verify session. Please check your connection and try again.');
+          }
           // Keep last known authenticated state intact for transient errors so the
           // UI doesn't redirect to /login on every flaky network blip.
         }

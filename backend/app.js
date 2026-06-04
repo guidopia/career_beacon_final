@@ -31,81 +31,35 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// --- CORS Configuration (MUST be first, before other middleware) ---
+// --- CORS (must be first) ---
 const allowedOrigins = [
-  'https://prodigy-ai.guidopia.com',
-  ...(process.env.CORS_ORIGINS
-    ? process.env.CORS_ORIGINS.split(',').map((s) => s.trim()).filter(Boolean)
-    : []),
+  ...new Set([
+    'https://careerbeacon.guidopia.com',
+    
+    ...(process.env.CORS_ORIGINS || process.env.ALLOWED_ORIGINS || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean),
+  ]),
 ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log('🔍 CORS check for origin:', origin);
-    
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) {
-      console.log('✅ Allowing request with no origin');
-      return callback(null, true);
-    }
-
-    // Always allow localhost in non-production (common dev env: NODE_ENV is undefined)
-    const isLocalhost =
-      typeof origin === 'string' &&
-      (origin.includes('localhost') || origin.includes('127.0.0.1'));
-    if (process.env.NODE_ENV !== 'production' && isLocalhost) {
-      console.log('✅ Allowing localhost origin for non-production:', origin);
-      return callback(null, true);
-    }
-    
-    // Allow requests from allowed origins
-    if (allowedOrigins.includes(origin)) {
-      console.log('✅ Allowing origin:', origin);
-      return callback(null, true);
-    }
-    
-    // For development, allow all localhost origins
-    if (process.env.NODE_ENV === 'development' && origin.includes('localhost')) {
-      console.log('✅ Allowing localhost origin for development:', origin);
-      return callback(null, true);
-    }
-    
-    console.log('❌ CORS blocked origin:', origin);
-    return callback(new Error('CORS policy violation'), false);
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: [
-    'Content-Type', 
-    'Authorization', 
-    'X-Requested-With',
-    'x-admin-key',
-    'Accept',
-    'Origin',
-    'Cache-Control',
-    'Pragma'
-  ],
-  exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
-  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
-};
-
-// Apply CORS middleware FIRST
-app.use(cors(corsOptions));
-
-// Handle preflight OPTIONS requests explicitly
-app.options('*', (req, res) => {
-  console.log('🔄 Handling OPTIONS request for:', req.path);
-  console.log('🔄 Origin:', req.headers.origin);
-  console.log('🔄 Access-Control-Request-Headers:', req.headers['access-control-request-headers']);
-  
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, x-admin-key, Accept, Origin, Cache-Control, Pragma');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Max-Age', '86400'); // 24 hours
-  
-  res.sendStatus(200);
-});
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'x-admin-key',
+      'Accept',
+      'Origin',
+      'Cache-Control',
+      'Pragma',
+    ],
+  })
+);
 
 // Now add other middleware
 app.use(logger('dev'));
