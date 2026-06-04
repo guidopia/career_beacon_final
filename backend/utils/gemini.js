@@ -1,33 +1,13 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-
-// Validate API key
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-if (!GEMINI_API_KEY) {
-  console.error('GEMINI_API_KEY is not configured in environment variables');
-}
-
-const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+const { generateFutureMeFromPrompt } = require('./futureMeOpenai');
 
 async function generateFutureMeCard(data) {
   try {
-    // Handle both old format (answers) and new format (onboardingData)
     const inputData = data.onboardingData || data.answers || data;
 
     if (!inputData || typeof inputData !== 'object') {
       throw new Error('Invalid input data format');
     }
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-      generationConfig: {
-        temperature: 0.7,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 1024,
-      }
-    });
-
-    // Create a comprehensive prompt based on onboarding data
     const prompt = `
 Based on the following student profile from onboarding:
 
@@ -65,43 +45,10 @@ Required format:
   "cta": "string"
 }`;
 
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }]
-    });
-
-    const response = await result.response;
-    let text = response.text();
-
-    // Clean the response
-    text = text.replace(/```json\n?|\n?```/g, '').trim();
-
-    try {
-      const parsedResponse = JSON.parse(text);
-
-      // Validate required fields
-      const requiredFields = ['futureRole', 'tagline', 'skills', 'mentors', 'mindset', 'salary', 'keySkills', 'cta'];
-      const missingFields = requiredFields.filter(field => !parsedResponse[field]);
-
-      if (missingFields.length > 0) {
-        throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
-      }
-
-      // Map skills to tags for consistency with frontend
-      const mappedResponse = {
-        ...parsedResponse,
-        tags: parsedResponse.skills || parsedResponse.tags || []
-      };
-      
-      return mappedResponse;
-    } catch (parseError) {
-      console.error('Failed to parse Gemini response:', text);
-      throw new Error('Invalid JSON response from Gemini API');
-    }
+    return await generateFutureMeFromPrompt(prompt, { mapSkillsToTags: true });
   } catch (error) {
-    console.error('Gemini API error:', error);
     throw new Error(`Failed to generate Future Me card: ${error.message}`);
   }
 }
 
 module.exports = { generateFutureMeCard };
-//whats error

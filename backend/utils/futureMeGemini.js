@@ -1,12 +1,4 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-
-// Validate API key
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-if (!GEMINI_API_KEY) {
-  console.error('GEMINI_API_KEY is not configured in environment variables');
-}
-
-const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+const { generateFutureMeFromPrompt } = require('./futureMeOpenai');
 
 async function generateFutureMeFromStepper(stepperData) {
   try {
@@ -16,17 +8,6 @@ async function generateFutureMeFromStepper(stepperData) {
       throw new Error('Invalid stepper data format');
     }
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-      generationConfig: {
-        temperature: 0.7,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 1024,
-      }
-    });
-
-    // Create a detailed prompt based on stepper answers
     const prompt = `
 You are a career guidance expert specializing in helping students discover their future career paths. 
 Based on the following student preferences from the Future Me Stepper assessment:
@@ -82,47 +63,10 @@ Guidelines for each field:
 
 Make the response inspiring yet practical, focusing on how their preferences can lead to a fulfilling career.`;
 
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }]
-    });
-
-    const response = await result.response;
-    let text = response.text();
-
-    // Clean the response
-    text = text.replace(/```json\n?|\n?```/g, '').trim();
-
-    try {
-      const parsedResponse = JSON.parse(text);
-
-      // Validate required fields
-      const requiredFields = ['futureRole', 'tagline', 'skills', 'mentors', 'mindset', 'salary', 'keySkills', 'cta'];
-      const missingFields = requiredFields.filter(field => !parsedResponse[field]);
-
-      if (missingFields.length > 0) {
-        throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
-      }
-
-      // Add additional validation for array fields
-      if (!Array.isArray(parsedResponse.skills) || parsedResponse.skills.length < 4) {
-        throw new Error('Skills must be an array with at least 4 items');
-      }
-      if (!Array.isArray(parsedResponse.mentors) || parsedResponse.mentors.length < 2) {
-        throw new Error('Mentors must be an array with at least 2 items');
-      }
-      if (!Array.isArray(parsedResponse.keySkills) || parsedResponse.keySkills.length < 3) {
-        throw new Error('Key skills must be an array with at least 3 items');
-      }
-
-      return parsedResponse;
-    } catch (parseError) {
-      console.error('Failed to parse Gemini response:', text);
-      throw new Error('Invalid JSON response from Gemini API');
-    }
+    return await generateFutureMeFromPrompt(prompt, { strictArrays: true });
   } catch (error) {
-    console.error('Future Me Stepper Gemini API error:', error);
     throw new Error(`Failed to generate Future Me card from stepper: ${error.message}`);
   }
 }
 
-module.exports = { generateFutureMeFromStepper }; 
+module.exports = { generateFutureMeFromStepper };

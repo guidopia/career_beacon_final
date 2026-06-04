@@ -18,7 +18,7 @@ router.post('/generate', authenticateToken, async (req, res) => {
       });
     }
 
-    // Generate card data using Gemini
+    // Generate card data using OpenAI
     const cardData = await generateFutureMeCard({ onboardingData: inputData });
     
     // Create new FutureMeCard document
