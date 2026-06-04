@@ -179,7 +179,7 @@ const SanskritiWelcome = () => {
                                 <GraduationCap className="w-6 h-6 text-blue-400" />
                             </div>
                             <div>
-                                <h1 className="text-xl font-semibold text-white">Prodigy AI Assistant</h1>
+                                <h1 className="text-xl font-semibold text-white">Career Beacon Assistant</h1>
                                 <p className="text-xs text-white/50">Career Counselor</p>
                             </div>
                         </div>
@@ -546,7 +546,7 @@ const SanskritiWelcome = () => {
             <footer className="border-t border-white/5">
                 <div className="max-w-7xl mx-auto px-6 py-8">
                     <div className="flex items-center justify-between text-sm text-white/40">
-                        <div>© 2025 Prodigy AI Assistant • Your Trusted Career Guide</div>
+                        <div>© 2025 Career Beacon Assistant • Your Trusted Career Guide</div>
                         <div className="flex items-center space-x-6">
                             <a href="#" className="hover:text-white/60 transition-colors">Privacy</a>
                             <a href="#" className="hover:text-white/60 transition-colors">Terms</a>

@@ -1,4 +1,4 @@
-# PRODIGY AI - Robots.txt
+# CAREER BEACON - Robots.txt
 # Allow search engines to crawl all public pages
 
 User-agent: *

@@ -107,7 +107,7 @@ const validateArticleUrl = async (url) => {
     headers: {
       // Some sites (e.g., Medium, Cloudflare) block default node clients
       'User-Agent':
-        'Mozilla/5.0 (compatible; ProdigyAI-LinkValidator/1.0; +https://prodigy-ai)',
+        'Mozilla/5.0 (compatible; CareerBeacon-LinkValidator/1.0; +https://career-beacon)',
       Accept: 'text/html,application/xhtml+xml',
     },
   };

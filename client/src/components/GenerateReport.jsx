@@ -92,14 +92,14 @@ const GenerateReport = () => {
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-          {/* Prodigy AI Assistant Chat Bot */}
+          {/* Career Beacon Assistant Chat Bot */}
           <div className="group bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl p-8 border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:shadow-2xl hover:scale-105">
             <div className="flex items-center mb-6">
               <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-4 mr-4 group-hover:scale-110 transition-transform duration-300">
                 <Bot className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-1">Prodigy AI Assistant</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-1">Career Beacon Assistant</h3>
                 <p className="text-purple-600 font-medium">Career Counselor</p>
               </div>
             </div>

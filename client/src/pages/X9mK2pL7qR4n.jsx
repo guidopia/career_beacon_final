@@ -65,7 +65,7 @@ const X9mK2pL7qR4n = () => {
 
   const getModuleColor = (moduleName) => {
     const colors = {
-      'Prodigy AI Assistant': 'from-orange-500 to-red-500',
+      'Career Beacon Assistant': 'from-orange-500 to-red-500',
       'Exam AI': 'from-cyan-500 to-blue-500',
       'Upskilling': 'from-green-500 to-emerald-500',
       'College Search': 'from-blue-500 to-indigo-500',
@@ -77,7 +77,7 @@ const X9mK2pL7qR4n = () => {
 
   const getModuleIcon = (moduleName) => {
     const icons = {
-      'Prodigy AI Assistant': '🤖',
+      'Career Beacon Assistant': '🤖',
       'Exam AI': '📚',
       'Upskilling': '⚡',
       'College Search': '🎓',

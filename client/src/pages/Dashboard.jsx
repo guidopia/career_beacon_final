@@ -77,7 +77,7 @@ export default function Dashboard() {
       color: "#60A5FA"
     },
     {
-      name: "Prodigy AI Assistant",
+      name: "Career Beacon Assistant",
       description: "AI-powered counselor for your journey",
       route: "/assistant",
       icon: MessageSquare,

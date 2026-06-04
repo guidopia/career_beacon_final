@@ -101,8 +101,8 @@ const FAQ: React.FC = () => {
       answer: "A creative digital space to define your future goals, the person you want to become, and track your progress toward that vision."
     },
     {
-      question: "What is Prodigy AI Assistant?",
-      answer: `Prodigy AI Assistant is the AI chatbot on ${SITE_BRAND_NAME_SENTENCE} that helps you with personalized guidance, solves doubts, and supports your academic and career needs.`
+      question: "What is Career Beacon Assistant?",
+      answer: `Career Beacon Assistant is the AI chatbot on ${SITE_BRAND_NAME_SENTENCE} that helps you with personalized guidance, solves doubts, and supports your academic and career needs.`
     },
     {
       question: "How long does a subscription last?",

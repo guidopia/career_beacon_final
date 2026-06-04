@@ -254,7 +254,7 @@ export default function Upskilling() {
                 Build any skill, end-to-end
               </h1>
               <p className="text-sm sm:text-[15px] text-gray-400 mt-2 max-w-2xl">
-                Pick a skill or describe one. Prodigy AI builds a 6-module path with real videos and reference articles, then quizzes you to lock it in.
+                Pick a skill or describe one. Career Beacon builds a 6-module path with real videos and reference articles, then quizzes you to lock it in.
               </p>
 
               {/* Custom skill input + browse filter (single calm form) */}
@@ -365,7 +365,7 @@ export default function Upskilling() {
                 <div className="min-w-0">
                   <div className="text-sm font-semibold text-white">Need a human guide?</div>
                   <div className="text-xs text-gray-400 mt-0.5">
-                    Talk to a Prodigy AI counsellor for a custom roadmap and mentor matching.
+                    Talk to a Career Beacon counsellor for a custom roadmap and mentor matching.
                   </div>
                 </div>
               </div>

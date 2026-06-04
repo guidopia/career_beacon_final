@@ -221,7 +221,7 @@ const SanskritiChat = () => {
                   <GraduationCap className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <h1 className="text-base font-semibold">Prodigy AI Assistant</h1>
+                  <h1 className="text-base font-semibold">Career Beacon Assistant</h1>
                   <p className="text-xs text-white/50">Online & Ready</p>
                 </div>
               </div>
@@ -257,7 +257,7 @@ const SanskritiChat = () => {
                   <GraduationCap className="w-7 h-7 text-blue-400" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold">Prodigy AI Assistant</h1>
+                  <h1 className="text-xl font-bold">Career Beacon Assistant</h1>
                   <p className="text-sm text-white/50">Your Career Guidance Assistant</p>
                 </div>
               </div>
@@ -471,7 +471,7 @@ const SanskritiChat = () => {
             </div>
           </div>
           <div className="text-center mt-2 md:mt-1.5 text-sm md:text-sm text-white/40">
-            Press Enter to send • Prodigy AI Assistant is here to help with your career decisions
+            Press Enter to send • Career Beacon Assistant is here to help with your career decisions
           </div>
         </div>
       </div>

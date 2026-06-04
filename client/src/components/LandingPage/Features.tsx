@@ -24,7 +24,7 @@ const featuresData = [
   },
   {
     icon: FileText,
-    title: 'Prodigy AI Assistant™ Cultural Intelligence',
+    title: 'Career Beacon Assistant™ Cultural Intelligence',
     description: 'Unique cultural intelligence module that understands how your background and values influence career fit and workplace compatibility.',
     benefits: ['Cultural alignment', 'Work environment matching', 'Value-based guidance']
   },

@@ -7,7 +7,7 @@ let currentTracking = null;
  * Module name mappings for consistent tracking
  */
 export const MODULE_NAMES = {
-  ASSISTANT: 'Prodigy AI Assistant',
+  ASSISTANT: 'Career Beacon Assistant',
   EXAM_AI: 'Exam AI',
   UPSKILLING: 'Upskilling',
   COLLEGE_SEARCH: 'College Search',
@@ -19,7 +19,7 @@ export const MODULE_NAMES = {
  * Determine module from route path
  */
 export const getModuleFromRoute = (pathname) => {
-  // Prodigy AI Assistant
+  // Career Beacon Assistant
   if (pathname.includes('/assistant')) {
     return MODULE_NAMES.ASSISTANT;
   }

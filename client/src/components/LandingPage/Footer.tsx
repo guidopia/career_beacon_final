@@ -10,7 +10,7 @@ const Footer = () => {
     platform: [
       { name: 'Dashboard', href: 'login' },
       { name: 'Career Assessment', href: 'login' },
-      { name: 'Prodigy AI Assistant', href: 'login' },
+      { name: 'Career Beacon Assistant', href: 'login' },
       { name: 'Exam AI', href: 'login' },
     ],
     features: [

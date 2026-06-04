@@ -57,7 +57,7 @@ export default function Layout({ children }) {
       color: "#06B6D4"
     },
     {
-      name: "Prodigy AI Assistant",
+      name: "Career Beacon Assistant",
       route: "/assistant",
       icon: MessageSquare,
       color: "#F97316"

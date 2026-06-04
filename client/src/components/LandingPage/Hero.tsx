@@ -638,7 +638,7 @@ const Hero = () => {
                   <Psychology sx={{ color: '#a855f7', fontSize: 32 }} />
                   <Box>
                     <Typography variant="body2" sx={{ color: '#fff', fontWeight: 700, fontSize: '0.85rem', lineHeight: 1.2 }}>Exam AI &</Typography>
-                    <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem' }}>Prodigy AI Assistant™</Typography>
+                    <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem' }}>Career Beacon Assistant™</Typography>
                   </Box>
                 </Box>
               </Card>

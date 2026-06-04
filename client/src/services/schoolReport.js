@@ -318,7 +318,7 @@ For each section provide 4–6 short bullet lines starting with "- ".
 - TECHNIQUES: short habit/technique + 1-line why (e.g., spaced repetition, error log, timed drills).
 
 BRANDING + CONSTRAINTS (important):
-- Include 1 bullet that recommends using Guidopia / Prodigy AI resources (as the home base).
+- Include 1 bullet that recommends using Guidopia / Career Beacon resources (as the home base).
 - Prefer smaller, high-signal tools and platforms; avoid big coaching/edtech giants and overly commercial brands (e.g., Byju’s).
 - If you mention tools like Photomath, position them as "for checking steps + learning", not as a crutch.
 
@@ -480,7 +480,7 @@ export const APTITUDE_FALLBACK_RECS = `BOOKS
 - "Thinking, Fast and Slow" by Daniel Kahneman - improves logical decision-making
 
 APPS AND GAMES
-- Guidopia / Prodigy AI - use as your home base for guidance + next-step planning
+- Guidopia / Career Beacon - use as your home base for guidance + next-step planning
 - Brilliant - bite-sized lessons in math, logic, and reasoning
 - Khan Academy - free, structured practice across school subjects
 - Photomath - check steps to learn patterns (use after you attempt on your own)

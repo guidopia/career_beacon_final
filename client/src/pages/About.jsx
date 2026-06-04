@@ -107,7 +107,7 @@ const AboutUs = () => {
                     href="/"
                     className="group relative px-6 py-3 bg-white text-black text-sm font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/20 border border-white/20 inline-flex items-center backdrop-blur-sm"
                 >
-                    <span className="relative z-10">Explore Prodigy AI</span>
+                    <span className="relative z-10">Explore Career Beacon</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
             </div>
@@ -240,7 +240,7 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            {/* Why Prodigy AI Section */}
+            {/* Why Career Beacon Section */}
             <section className="py-20 border-t border-white/[0.10] relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
@@ -249,7 +249,7 @@ const AboutUs = () => {
                         </div>
                         <h2 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight mb-6">
                             <span className="bg-gradient-to-b from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
-                                Why Prodigy AI?
+                                Why Career Beacon?
                             </span>
                         </h2>
                         <p className="text-gray-400 text-lg font-light max-w-3xl mx-auto">
@@ -282,7 +282,7 @@ const AboutUs = () => {
                                 href="/"
                                 className="group relative px-8 py-3 bg-white text-black text-lg font-bold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/20 border border-white/20 inline-flex items-center"
                             >
-                                <span className="relative z-10">Explore Prodigy AI</span>
+                                <span className="relative z-10">Explore Career Beacon</span>
                                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                                 <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300" />
                             </a>

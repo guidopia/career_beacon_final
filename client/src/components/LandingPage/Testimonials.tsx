@@ -4,7 +4,7 @@ import { SITE_BRAND_NAME_SENTENCE } from '../../constants/branding';
 
 const testimonialsData = [
   {
-    quote: `Prodigy AI Assistant on ${SITE_BRAND_NAME_SENTENCE} helped me craft a compelling profile. Within a month, I was shortlisted for three internships!`,
+    quote: `Career Beacon Assistant on ${SITE_BRAND_NAME_SENTENCE} helped me craft a compelling profile. Within a month, I was shortlisted for three internships!`,
     name: 'Aisha Khan',
     title: 'Final-Year B.Com Student',
 
@@ -36,7 +36,7 @@ const testimonialsData = [
     skills: ['Career Test', 'Engineering', 'Goal Setting']
   },
   {
-    quote: `Prodigy AI Assistant on ${SITE_BRAND_NAME_SENTENCE} guided me in building a profile that stands out. I've received multiple internship offers in the mental health sector.`,
+    quote: `Career Beacon Assistant on ${SITE_BRAND_NAME_SENTENCE} guided me in building a profile that stands out. I've received multiple internship offers in the mental health sector.`,
     name: 'Simran Kaur',
     title: 'First-Year BA Psychology Student',
 

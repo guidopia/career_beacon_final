@@ -117,7 +117,7 @@ const PrivacyPolicy = () => {
                         <p className="text-lg font-light">Effective Date: July 07, 2025</p>
                         <p className="text-xl leading-relaxed max-w-3xl mx-auto font-light">
                             At Guidopia Edtech Private Limited, we value your privacy and are committed to protecting your personal data.
-                            This Privacy Policy explains how we collect, use, and safeguard your information when you use Prodigy AI on guidopia.com.
+                            This Privacy Policy explains how we collect, use, and safeguard your information when you use Career Beacon on guidopia.com.
                         </p>
                     </div>
                 </div>

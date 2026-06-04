@@ -54,7 +54,7 @@ import X9mK2pL7qR4n from './pages/X9mK2pL7qR4n';
 import Y8nL3kP6qW5m from './pages/Y8nL3kP6qW5m';
 import { useModuleTimeTracking } from './hooks/useModuleTimeTracking';
 
-/** When `login`, `/` redirects to `/login` (e.g. Prodigy client). Set `VITE_PUBLIC_ROOT_ENTRY=login` in Vercel; never hardcode production URLs. */
+/** When `login`, `/` redirects to `/login` (e.g. Career Beacon client). Set `VITE_PUBLIC_ROOT_ENTRY=login` in Vercel; never hardcode production URLs. */
 const ROOT_ENTRY_IS_LOGIN = import.meta.env.VITE_PUBLIC_ROOT_ENTRY === 'login';
 
 const CareerPaths = () => <div className="p-8"><h1 className="text-2xl font-bold">Career Paths Page</h1><p>This page is under construction.</p></div>;

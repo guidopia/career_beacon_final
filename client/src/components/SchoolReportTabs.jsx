@@ -633,7 +633,7 @@ const exportReportAsPDF = ({
     pdf.setTextColor(255, 255, 255);
     pdf.setFont(undefined, 'bold');
     pdf.setFontSize(34);
-    pdf.text('PRODIGY AI', pageWidth / 2, 33, { align: 'center' });
+    pdf.text('CAREER BEACON', pageWidth / 2, 33, { align: 'center' });
 
     pdf.setFontSize(9.5);
     pdf.setTextColor(180, 200, 240);
@@ -849,13 +849,13 @@ const exportReportAsPDF = ({
       pdf.setPage(i);
       pdf.setFontSize(8);
       pdf.setTextColor(140, 140, 140);
-      pdf.text('Prodigy AI', margin, pageHeight - 8);
+      pdf.text('Career Beacon', margin, pageHeight - 8);
       pdf.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 8, {
         align: 'right',
       });
     }
 
-    pdf.save('prodigy-ai-student-report.pdf');
+    pdf.save('career-beacon-student-report.pdf');
   } catch (err) {
     console.error('PDF Export Error:', err);
     setError('Failed to export PDF. Please try again.');
@@ -1737,7 +1737,7 @@ const SchoolReportTabs = ({
               <Bot className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-1">Prodigy AI Assistant</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-1">Career Beacon Assistant</h3>
               <p className="text-purple-600 font-medium">Career Counselor</p>
             </div>
           </div>
