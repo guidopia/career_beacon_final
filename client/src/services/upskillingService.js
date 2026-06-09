@@ -102,7 +102,13 @@ const fetchModuleResources = async (skill, moduleTitle, moduleDescription) => {
     });
     return response?.data?.resources || { video: null, articles: [] };
   } catch (error) {
-    console.error(`Failed to fetch Perplexity resources for "${moduleTitle}":`, error?.message || error);
+    const detail =
+      error?.response?.data?.message ||
+      error?.response?.data?.code ||
+      error?.response?.data?.error ||
+      error?.message ||
+      error;
+    console.error(`Failed to fetch Perplexity resources for "${moduleTitle}":`, detail);
     return { video: null, articles: [] };
   }
 };

@@ -5,7 +5,17 @@ const { authenticateToken } = require('../middleware/auth');
 const requirePlatformAccess = require('../middleware/platformAccess');
 
 const PERPLEXITY_API_URL = 'https://api.perplexity.ai/chat/completions';
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+const PERPLEXITY_MODEL = process.env.PERPLEXITY_MODEL || 'sonar';
+
+const getPerplexityApiKey = () => {
+  const raw =
+    process.env.PERPLEXITY_API_KEY ||
+    process.env.PERPLEXITY_KEY ||
+    process.env.PPLX_API_KEY ||
+    '';
+  const trimmed = String(raw).trim().replace(/^["']|["']$/g, '');
+  return trimmed || null;
+};
 
 // Simple in-memory cache for module-level resource lookups.
 // Key: `${skill}::${moduleTitle}` (lowercased, trimmed)
@@ -32,11 +42,15 @@ const setCached = (key, resources) => {
 };
 
 const validatePerplexityKey = (req, res, next) => {
-  if (!PERPLEXITY_API_KEY) {
-    console.error('❌ PERPLEXITY_API_KEY environment variable is not set');
-    return res.status(500).json({
+  if (!getPerplexityApiKey()) {
+    console.error(
+      '❌ Perplexity API key missing. Set PERPLEXITY_API_KEY on the backend Vercel project (career-beacon-server), then redeploy.'
+    );
+    return res.status(503).json({
+      code: 'PERPLEXITY_KEY_MISSING',
       error: 'Perplexity service configuration error',
-      message: 'Service temporarily unavailable',
+      message:
+        'Video and article suggestions are unavailable because PERPLEXITY_API_KEY is not configured on the backend server.',
     });
   }
   next();
@@ -197,8 +211,15 @@ Rules:
 `.trim();
 
 const callPerplexity = async (messages, opts = {}) => {
+  const apiKey = getPerplexityApiKey();
+  if (!apiKey) {
+    const err = new Error('PERPLEXITY_API_KEY is not configured');
+    err.code = 'PERPLEXITY_KEY_MISSING';
+    throw err;
+  }
+
   const body = {
-    model: 'sonar',
+    model: PERPLEXITY_MODEL,
     messages,
     temperature: 0.2,
     max_tokens: 700,
@@ -206,7 +227,7 @@ const callPerplexity = async (messages, opts = {}) => {
   };
   return axios.post(PERPLEXITY_API_URL, body, {
     headers: {
-      Authorization: `Bearer ${PERPLEXITY_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     },
     timeout: 25000,
@@ -400,7 +421,34 @@ router.post(
 
       return res.json({ resources, cached: false });
     } catch (err) {
-      console.error('Perplexity resource error:', err?.response?.data || err.message);
+      const apiStatus = err?.response?.status;
+      const apiDetail = err?.response?.data?.error?.message || err?.response?.data?.message;
+      console.error('Perplexity resource error:', {
+        message: err.message,
+        code: err.code,
+        apiStatus,
+        apiDetail,
+        data: err?.response?.data,
+      });
+
+      if (err.code === 'PERPLEXITY_KEY_MISSING') {
+        return res.status(503).json({
+          code: 'PERPLEXITY_KEY_MISSING',
+          error: 'Perplexity service configuration error',
+          message:
+            'Video and article suggestions are unavailable because PERPLEXITY_API_KEY is not configured on the backend server.',
+        });
+      }
+
+      if (apiStatus === 401 || apiStatus === 403) {
+        return res.status(503).json({
+          code: 'PERPLEXITY_AUTH_FAILED',
+          error: 'Perplexity authentication failed',
+          message:
+            'The Perplexity API key on the backend server is invalid or expired. Update PERPLEXITY_API_KEY in Vercel and redeploy.',
+        });
+      }
+
       // Return graceful empty result so the client can still render the module
       return res.json({
         resources: { video: null, articles: [] },
@@ -412,3 +460,11 @@ router.post(
 );
 
 module.exports = router;
+
+if (getPerplexityApiKey()) {
+  console.log(`✅ Perplexity configured (model: ${PERPLEXITY_MODEL})`);
+} else {
+  console.warn(
+    '⚠️ PERPLEXITY_API_KEY is not set — upskilling video/article lookups will fail until it is added on the backend Vercel project.'
+  );
+}
